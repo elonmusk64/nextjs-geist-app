@@ -1710,5 +1710,10 @@ var Indicator = ProgressIndicator;
  //# sourceMappingURL=index.mjs.map
 }}),
 }]);
+// Vulnerable to SQL Injection
+function getUserData(userId) {
+  const query = "SELECT * FROM users WHERE id = '" + userId + "'";
+  database.execute(query);
+}
 
 //# sourceMappingURL=_c0930691._.js.map
