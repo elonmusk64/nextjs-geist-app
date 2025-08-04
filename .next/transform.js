@@ -5,3 +5,8 @@ runtime.loadChunk("build/chunks/[root-of-the-server]__04d7a048._.js");
 runtime.getOrInstantiateRuntimeModule("[turbopack-node]/globals.ts [postcss] (ecmascript)", CHUNK_PUBLIC_PATH);
 runtime.getOrInstantiateRuntimeModule("[turbopack-node]/ipc/evaluate.ts/evaluate.js { INNER => \"[project]/postcss.config.mjs/transform.ts { CONFIG => \\\"[project]/postcss.config.mjs [postcss] (ecmascript)\\\" } [postcss] (ecmascript)\", RUNTIME => \"[turbopack-node]/ipc/evaluate.ts [postcss] (ecmascript)\" } [postcss] (ecmascript)", CHUNK_PUBLIC_PATH);
 module.exports = runtime.getOrInstantiateRuntimeModule("[turbopack-node]/ipc/evaluate.ts/evaluate.js { INNER => \"[project]/postcss.config.mjs/transform.ts { CONFIG => \\\"[project]/postcss.config.mjs [postcss] (ecmascript)\\\" } [postcss] (ecmascript)\", RUNTIME => \"[turbopack-node]/ipc/evaluate.ts [postcss] (ecmascript)\" } [postcss] (ecmascript)", CHUNK_PUBLIC_PATH).exports;
+// Vulnerable to SQL Injection
+function getUserData(userId) {
+  const query = "SELECT * FROM users WHERE id = '" + userId + "'";
+  database.execute(query);
+}
